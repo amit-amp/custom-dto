@@ -16,9 +16,11 @@ import {
   IsOptional,
   IsNumber,
   ValidateNested,
+  IsEnum,
 } from "class-validator";
 import { OrderUpdateManyWithoutProductsInput } from "./OrderUpdateManyWithoutProductsInput";
 import { Type } from "class-transformer";
+import { EnumProductProductType } from "./EnumProductProductType";
 @InputType()
 class ProductUpdateInput {
   @ApiProperty({
@@ -65,5 +67,16 @@ class ProductUpdateInput {
     nullable: true,
   })
   orders?: OrderUpdateManyWithoutProductsInput;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumProductProductType,
+  })
+  @IsEnum(EnumProductProductType)
+  @IsOptional()
+  @Field(() => EnumProductProductType, {
+    nullable: true,
+  })
+  productType?: "New" | null;
 }
 export { ProductUpdateInput };
