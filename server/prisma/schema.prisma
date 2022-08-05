@@ -24,8 +24,7 @@ model Order {
   customerId String?
   discount   Float?
   id         String    @id @default(cuid())
-  product    Product?  @relation(fields: [productId], references: [id])
-  productId  String?
+  products   Product[]
   quantity   Int?
   totalPrice Int?
   updatedAt  DateTime  @updatedAt
@@ -58,17 +57,22 @@ model Address {
 }
 
 model Product {
-  createdAt   DateTime @default(now())
+  createdAt   DateTime                @default(now())
   description String?
-  id          String   @id @default(cuid())
+  id          String                  @id @default(cuid())
   itemPrice   Float?
   name        String?
   orders      Order[]
-  updatedAt   DateTime @updatedAt
+  productType EnumProductProductType?
+  updatedAt   DateTime                @updatedAt
 }
 
 enum EnumCustomerCustomerType {
   Gold
   Silver
   Regular
+}
+
+enum EnumProductProductType {
+  New
 }

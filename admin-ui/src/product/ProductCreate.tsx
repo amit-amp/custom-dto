@@ -8,6 +8,7 @@ import {
   NumberInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  SelectInput,
 } from "react-admin";
 
 import { OrderTitle } from "../order/OrderTitle";
@@ -27,6 +28,14 @@ export const ProductCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={OrderTitle} />
         </ReferenceArrayInput>
+        <SelectInput
+          source="productType"
+          label="product type"
+          choices={[{ label: "New", value: "New" }]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
       </SimpleForm>
     </Create>
   );

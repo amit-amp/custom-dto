@@ -9,4 +9,5 @@ export type ProductWhereInput = {
   itemPrice?: FloatNullableFilter;
   name?: StringNullableFilter;
   orders?: OrderListRelationFilter;
+  productType?: "New";
 };

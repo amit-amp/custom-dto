@@ -6,7 +6,7 @@ export type Order = {
   customer?: Customer | null;
   discount: number | null;
   id: string;
-  product?: Product | null;
+  products?: Array<Product>;
   quantity: number | null;
   totalPrice: number | null;
   updatedAt: Date;

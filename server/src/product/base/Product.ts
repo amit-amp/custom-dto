@@ -17,9 +17,11 @@ import {
   IsOptional,
   IsNumber,
   ValidateNested,
+  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Order } from "../../order/base/Order";
+import { EnumProductProductType } from "./EnumProductProductType";
 @ObjectType()
 class Product {
   @ApiProperty({
@@ -79,6 +81,17 @@ class Product {
   @Type(() => Order)
   @IsOptional()
   orders?: Array<Order>;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumProductProductType,
+  })
+  @IsEnum(EnumProductProductType)
+  @IsOptional()
+  @Field(() => EnumProductProductType, {
+    nullable: true,
+  })
+  productType?: "New" | null;
 
   @ApiProperty({
     required: true,
